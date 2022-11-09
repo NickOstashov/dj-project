@@ -1,0 +1,39 @@
+.header {
+    width: 100%;
+    height: 70px;
+    background-color: #ce1532;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.body {
+    background-color: #EEE;
+}
+
+.footer {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    margin-top: 200px;
+    flex: 0 0 auto;
+    background-color: #C0C0C0;
+}
+
+.menu a{
+    text-transform: none;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.my-btn {
+    font-size: 16px;
+    color: #ce1532;
+    padding: 10px;
+    background-color: #FFBDBD;
+    border-radius: 8px;
+}
+
+.menu a:active{
+    color: #ce1532;
+}
+

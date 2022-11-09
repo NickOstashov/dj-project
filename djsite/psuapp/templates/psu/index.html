@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+ 
+{% load static %}
+
+{% block add_css%} 
+  <link rel="stylesheet" href="{% static 'psu/css/index.css' %}">
+{%endblock%}
+
+{%block style%}
+<style type="text/css">
+.my-class{
+  color:#CE1532;
+  }
+</style>
+{%endblock%}
+
+{% block title%} 
+  django project
+{%endblock%}
+
+{% block content%}
+
+<h1>Возможные проблемы</h1>
+
+<div class= "row row-cols-1 row-cols-md-3 g-4">
+  {% for pr in list %}
+  <div class = "col">
+    <div class = "card h-100">
+      <div class = "card-body">
+        <h5 class = "card-title my-class">{{pr.naming}}</h5>
+        <p>{{pr.description}}</p>
+      </div>
+    </div>
+  </div>
+  {%endfor%}
+</div>
+
+{%endblock%}
