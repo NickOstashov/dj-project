@@ -6,22 +6,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> {% block title%} {%endblock%} </title>
-    {% block add_css%} {%endblock%}
-    {% block style%} {%endblock%}
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{%static 'css/base.css'%}">
+    {% block add_css%} {%endblock%}
   </head>
   <body class= 'body'>
     <header class = "header">
       <div class = "container">
-        <div class = "logo">
-    
-        </div>  
-        <div class = "menu">
-          <a class="my-btn" href="#">Войти</a>
-          <a class="my-btn" href="#">Регистрация</a>
-        </div>  
-      </div>
+        <div class = "my-nav">
+          <div class ='logo'>
+            <img src="{% static 'img/logo.svg'%}" alt="#" height = "55px" width = "55px">
+            <h2 class = "text-logo">App</h2>
+          </div>
+          <div class = "menu">
+            <div class="search">
+              <input type="text" class="search-field" placeholder="Введите поисковый запрос">
+              <img src="{% static 'img/search.svg'%}" alt="" class="search-icon">
+            </div>
+            <div class = "menu-btn>">
+              <button type="button" class="btn btn-danger my-class-menu">Войти</button>
+              <button type="button" class="btn btn-danger my-class-menu">Регистрация</button>
+            </div>
+          </div>
+        </div>
+    </div>
     </header>
     <div class = 'container'>
     {%block content %}

@@ -4,6 +4,6 @@ from psu.models import Problem
 
 @admin.register(Problem)
 class ProblemAdmin(admin.ModelAdmin):
-    list_display = ['id','naming','description']
-    list_editable = ['description']
+    list_display = ['id','naming','description','icon']
+    list_editable = ['description','icon']
     pass

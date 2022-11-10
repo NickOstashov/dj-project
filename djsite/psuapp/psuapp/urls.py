@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.conf import settings
+from django.views.static import serve
+from django.conf.urls.static import static
+
 #импорты каталогов
 
 from psu.views import HomePage
@@ -24,3 +28,12 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("psu/",HomePage.as_view()), #http://127.0.0.1:8000
 ]
+
+urlpatterns +=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+# if settings.DEBUG:
+#     urlpatterns += static(
+#         settings.MEDIA_URL,
+#         document_root = settings.MEDIA_ROOT
+#     )
+    

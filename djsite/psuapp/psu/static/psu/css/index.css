@@ -1,3 +1,18 @@
 .my-class{
     color: #CE1532; 
 } 
+
+.my-card{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    flex-direction: row;
+}
+
+.card-img{
+    width: auto;
+}
+
+.home-page-title{
+    margin-bottom: 20px;
+}

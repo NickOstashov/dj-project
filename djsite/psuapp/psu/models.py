@@ -4,16 +4,9 @@ from django.db import models
 
 
 class Problem(models.Model):
-    '''
-    Содержимое главной страницы 
-
-    Поля модели:
-    [*]naming - наименование возможной проблемы (50 символа максимум)
-    [*]description - описание проблемы (255 символа максимум)
-
-    '''
     naming = models.CharField(max_length=50, verbose_name = "Наименование возможной проблемы")
     description= models.CharField(max_length = 255, verbose_name = "Описание возможной проблемы")
+    icon = models.ImageField(blank=True, null = True, upload_to='psuapp/media/images', verbose_name="Изображение")
 
     def __str__(self):
         return self.naming
