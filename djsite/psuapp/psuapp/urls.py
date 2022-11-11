@@ -23,10 +23,12 @@ from django.conf.urls.static import static
 #импорты каталогов
 
 from psu.views import HomePage
+from contact.views import ContactHomePage
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("psu/",HomePage.as_view()), #http://127.0.0.1:8000
+    path('',HomePage.as_view()), 
+    path('',ContactHomePage.as_view())
 ]
 
 urlpatterns +=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

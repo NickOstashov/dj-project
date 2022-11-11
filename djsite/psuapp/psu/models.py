@@ -11,6 +11,9 @@ class Problem(models.Model):
     def __str__(self):
         return self.naming
     
+    def __str__(self):
+        return self.description
+    
     class Meta:
         verbose_name = "Возможная проблема"
         verbose_name_plural = "Возможные проблемы"

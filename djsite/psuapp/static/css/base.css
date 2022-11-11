@@ -34,6 +34,10 @@
     border-radius: 10px;
 }
 
+.my-class-menu:hover{
+    background-color: rgba(255, 189, 189,0.5)
+}
+
 .search {
     display: inline-flex;
     background-color: #EEE;
@@ -60,10 +64,13 @@
     outline: none;
 }
 
+.body-contant{
+    min-height: 1500px;
+}
+
 .body {
     background-color: #EEE;
 }
-
 
 
 .footer {
@@ -75,4 +82,11 @@
     background-color: #C0C0C0;
 }
 
+
+@media(max-width:768px) {
+    .search{
+        display: none;
+    }
+    
+}
 

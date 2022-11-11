@@ -14,7 +14,7 @@
 
 <h2 class = "home-page-title">Возможные проблемы</h2>
 
-<div class= "row row-cols-1 row-cols-md-3 g-4">
+<div class= "row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
   {% for pr in list %}
   <div class = "col">
     <div class = "card h-100 my-card">
@@ -32,4 +32,29 @@
   {%endfor%}
 </div>
 
+{%endblock%}
+
+{%block footer%}
+<footer class = 'footer'>
+  <div class = "container">
+    <div class= "row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {% for cont in contact %}
+        <div class = "col">
+          <div class = "card h-80">
+            <div class = "card-body">
+              <p class = "contact-text">
+                {{cont.surname}}<br>
+                {{cont.name}}<br>
+              </p>
+              <p class = "contact-text">
+                {{cont.email}}<br>
+                {{cont.tel}}<br>
+              </p>
+            </div>
+          </div>
+        </div>
+      {%endfor%}
+    </div>
+  </div>
+</footer>
 {%endblock%}
