@@ -16,3 +16,67 @@
 .home-page-title{
     margin-bottom: 20px;
 }
+
+.footer{
+    display: flex;
+    width: 100%;
+    margin-top: 100px;
+    flex: 0 0 auto;
+    background-color: #C0C0C0;
+    padding-bottom: 20 px;
+
+}
+
+.my-footer{
+    background: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.contact-text{
+    font-size: 12px;
+}
+
+.my-link{
+    display: block;
+    text-decoration: none;
+}
+
+.pr-description{
+    color: black;
+}
+
+.my-card:hover{
+    background-color: rgba(255, 219, 219, 0.8);
+}
+
+.search {
+    display: inline-flex;
+    background-color: #EEE;
+    border-radius: 30px;
+    padding: 10px;
+    height: 40px;
+    margin-right: 20px;
+}
+  
+.search-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    order: -1;
+}
+  
+.search-field {
+    width: 300px;
+    border: 0; 
+    background-color: #EEE;
+}
+  
+.search-field:focus {
+    outline: none;
+}
+
+@media(max-width:768px) {
+    .search{
+        display: none;
+    }
+}

@@ -10,25 +10,34 @@
   django project
 {%endblock%}
 
+{%block search%}
+<div class="search">
+  <input type="text" class="search-field" placeholder="Введите поисковый запрос" name = "search" value = "{{requesr.GET.search}}" >
+  <img src="{% static 'img/search.svg'%}" alt="" class="search-icon">
+</div>
+{%endblock%}
+
 {% block content%}
 
 <h2 class = "home-page-title">Возможные проблемы</h2>
 
-<div class= "row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+<div class= "row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 link">
   {% for pr in list %}
-  <div class = "col">
-    <div class = "card h-100 my-card">
-      <div class = "card-img">
-        {% if pr.icon %}
-            <img src="{{pr.icon.url }}" style = 'max-width:80px'>
-        {% endif %}
-      </div>
-      <div class = "card-body">
-        <h5 class = "card-title my-class">{{pr.naming}}</h5>
-        <p>{{pr.description}}</p>
+  <a class = "my-link" href ="{% url '' %}">
+    <div class= "col">
+      <div class = "card h-100 my-card">
+        <div class = "card-img">
+          {% if pr.icon %}
+              <img src="{{pr.icon.url }}" style = 'max-width:80px'>
+          {% endif %}
+        </div>
+        <div class = "card-body">
+          <h5 class = "card-title my-class">{{pr.naming}}</h5>
+          <p class= "pr-description">{{pr.description}}</p>
+        </div>
       </div>
     </div>
-  </div>
+  </a>
   {%endfor%}
 </div>
 
@@ -40,7 +49,7 @@
     <div class= "row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
       {% for cont in contact %}
         <div class = "col">
-          <div class = "card h-80">
+          <div class = "card h-60 my-footer">
             <div class = "card-body">
               <p class = "contact-text">
                 {{cont.surname}}<br>
