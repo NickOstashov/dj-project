@@ -9,7 +9,7 @@ class ProblemAdmin(admin.ModelAdmin):
 
 @admin.register(FAQ)
 class FaqAdmin(admin.ModelAdmin):
-    list_display = ['id','section','question','answer']
+    list_display = ['id','problem_id','problem','question','answer']
     list_editable = ['question','answer']
-    list_filter = ['section']
+    list_filter = ['problem_id']
     

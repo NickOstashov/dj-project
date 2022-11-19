@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+ 
+{% load static %}
+
+{% block title%} {{title}} {%endblock%}
+
+{% block add_css%} 
+  <link rel="stylesheet" href="{% static 'psu/css/detail.css' %}">
+{%endblock%}
+
+{%block search-category%}
+<div class ="container m-search">
+  <h1>{{title}}</h1>
+  <div class = 'my-form'>
+    <form action = "{% url 'search' %}" method = "get">
+      <div class="search">
+        <img src="{% static 'psu/img/search.svg'%}" alt="" class="search-icon">
+        <input type="text" type = "search" class="search-field" placeholder="Введите поисковый запрос" name = "srh" value = "{{request.GET.search}}">
+      </div>
+    </form>
+  </div> 
+</div>
+{%endblock%}
+
+
+{%block content%}
+<div class = 'contant'>
+<h2>Часто задаваемые вопросы</h2>
+
+{% for i in contant%}
+{%endfor%}
+
+</div>
+{%endblock%}

@@ -11,24 +11,26 @@
 {%endblock%}
 
 {%block search%}
+<form action = "{% url 'search' %}" method = "get">
 <div class="search">
-  <input type="text" class="search-field" placeholder="Введите поисковый запрос" name = "search" value = "{{requesr.GET.search}}" >
-  <img src="{% static 'img/search.svg'%}" alt="" class="search-icon">
+  <input type="text" type = "search" class="search-field" placeholder="Введите поисковый запрос" name = "srh" value = "{{request.GET.search}}" >
+  <img src="{% static 'psu/img/search.svg'%}" alt="" class="search-icon">
 </div>
+</form>
 {%endblock%}
 
 {% block content%}
 
 <h2 class = "home-page-title">Возможные проблемы</h2>
 
-<div class= "row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 link">
+<div class= "row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
   {% for pr in list %}
-  <a class = "my-link" href ="{% url '' %}">
+  <a class = "my-link" href ="{{pr.get_absolute_url}}">
     <div class= "col">
       <div class = "card h-100 my-card">
         <div class = "card-img">
           {% if pr.icon %}
-              <img src="{{pr.icon.url }}" style = 'max-width:80px'>
+              <img src="{{pr.icon.url}}" style = 'max-width:80px'>
           {% endif %}
         </div>
         <div class = "card-body">

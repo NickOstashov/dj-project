@@ -13,25 +13,25 @@ class Problem(models.Model):
 
     def get_absolute_url(self):
         from django.urls import reverse
-        return reverse("problem", kwargs={"pr_id": self.pk})
-    
+        return reverse('problem_detail', kwargs={'pr_id': self.id})
+
     class Meta:
         verbose_name = "Возможная проблема"
         verbose_name_plural = "Возможные проблемы"
 
 
 class FAQ(models.Model):
-    section_id = models.ForeignKey(Problem, blank = True, null = True,on_delete=models.SET_NULL)
+    problem = models.ForeignKey('Problem', blank = True, null = True,on_delete=models.SET_NULL, verbose_name="Индентификатотр проблемы")
     question = models.TextField(verbose_name="Вопрос")
     answer = models.TextField(verbose_name="Ответ")
 
     # def get_absolute_url(self):
     #     from django.urls import reverse
-    #     return reverse("faq_detail", kwargs={"pk": self.pk})
-    
+    #     return reverse("problem_detail", kwargs={"pk": self.problem_id})
+
     class Meta:
-        ordering = ['section']
+        ordering = ['problem_id']
         verbose_name = "Часто задаваемый вопрос"
-        verbose_name_plural = "Часто задаваемые выопросы"
+        verbose_name_plural = "Часто задаваемые вопросы"
 
 

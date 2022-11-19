@@ -8,7 +8,6 @@ html,body{
     width: 100%;
     height: 75px;
     background-color: #ce1532;
-    margin-bottom: 20px;
 }
 
 .my-nav{
@@ -57,5 +56,3 @@ html,body{
 .main{
     flex: 1 1 auto;
 }
-
-
