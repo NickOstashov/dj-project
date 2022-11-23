@@ -12,7 +12,7 @@
 <div class ="container m-search">
   <h1>{{title}}</h1>
   <div class = 'my-form'>
-    <form action = "{% url 'search' %}" method = "get">
+    <form action = "{% url 'category_search' %}" method = "get">
       <div class="search">
         <img src="{% static 'psu/img/search.svg'%}" alt="" class="search-icon">
         <input type="text" type = "search" class="search-field" placeholder="Введите поисковый запрос" name = "srh" value = "{{request.GET.search}}">
@@ -25,10 +25,34 @@
 
 {%block content%}
 <div class = 'contant'>
-<h2>Часто задаваемые вопросы</h2>
+  <h2>Часто задаваемые вопросы</h2>
+  {% for i in contant%}
+    <div class = "cl-ct">
+      <button class = "collapse-bt">
+        <div class = 'question'>
+          <img src="{% static 'psu/img/close.svg'%}" class='close'>
+          <img src="{% static 'psu/img/open.svg'%}" class='open'>
+          <h3>{{i.question}}</h3>
+        </div>
+      </button>
+      <div class = "collapse-contant">
+        <p>{{i.answer}}</p>
+      </div>
+    </div>
+  {%endfor%}
 
-{% for i in contant%}
-{%endfor%}
-
+    <div class = 'form-link'>
+      <p>
+        Если вы не нашли ответ на свой вопрос или не можете решить вашу проблему 
+        самостоятельно, оставьте заявку
+      </p>
+      <a href = "#">
+        <button type="button" class="btn btn-danger my-class-menu">Оставить заявку</button>
+      </a>
+    <div>
 </div>
+{%endblock%}
+
+{%block script%}
+  <script type="text/javascript" src="{% static 'psu/js/collapse-script.js' %}"></script>
 {%endblock%}

@@ -22,20 +22,15 @@ from django.conf.urls.static import static
 
 #импорты каталогов
 
-from psu.views import HomePage, Search, FaqPage
+from psu.views import HomePage, Search, FaqPage, CategorySearch
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('',HomePage.as_view(), name = "main_page"),
     path('search/',Search.as_view(),name = "search"),
+    path('category_search/',CategorySearch.as_view(), name = "category_search"),
     path('pr_category/<int:pr_id>/',FaqPage.as_view(),name="problem_detail"),
 ]
 
 urlpatterns +=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
-# if settings.DEBUG:
-#     urlpatterns += static(
-#         settings.MEDIA_URL,
-#         document_root = settings.MEDIA_ROOT
-#     )
-    

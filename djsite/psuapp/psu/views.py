@@ -46,4 +46,6 @@ class FaqPage(ListView):
         return context
 
 
-    
+class CategorySearch(FaqPage,ListView):
+    def get_queryset(self):
+        return FAQ.objects.filter(question__icontains = self.request.GET.get('srh'))

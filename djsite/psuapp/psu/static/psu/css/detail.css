@@ -45,6 +45,76 @@
 }
 
 
+
+/*Сво­ра­чи­ва­е­мые сек­ции */
+.collapse-bt{
+    cursor: pointer;
+    padding: 18px 0;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+}
+
+.question{
+    display: flex;
+    align-items: center;
+}
+
+.question h3{
+    margin: 0 0;
+}
+
+.close,
+.open{
+    height: 25px;
+    width: 25px;
+    order: -1;
+    margin-right: 15px;
+}
+
+.open{
+    display: none;
+}
+/* .active,
+.collapse-bt:hover{
+    background-color: #555;
+} */
+
+.active .close{
+    display: none;
+}
+
+.active .open{
+    display: inline;
+}
+
+.collapse-contant{
+    padding: 0 18px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    font-size: 20px;
+}
+
+/*Обращение*/
+.form-link{
+    margin: 100px 0;
+}
+
+/* Кнопка */
+.my-class-menu{
+    color: #ce1532;
+    background-color: #FFBDBD;
+    border-radius: 10px;
+    border: none;
+}
+
+.my-class-menu:hover{
+    color: #ce1532;
+    background-color: rgba(255, 189, 189,0.5)
+}
+
 @media(max-width:320px) {
     .m-search{
         display: none;
