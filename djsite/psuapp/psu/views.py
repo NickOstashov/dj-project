@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from psu.models import Problem, FAQ
+from rest_framework import serializers, viewsets
 # from contact.models import Contact
 
 
@@ -49,3 +50,24 @@ class FaqPage(ListView):
 class CategorySearch(FaqPage,ListView):
     def get_queryset(self):
         return FAQ.objects.filter(question__icontains = self.request.GET.get('srh'))
+
+
+class ProblemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Problem
+        fields = ['id', 'naming', 'description', 'icon']
+
+class ProblemViewSet(viewsets.ModelViewSet):
+    queryset = Problem.objects.all()
+    serializer_class = ProblemSerializer
+
+
+class FaqSerializer(serializers.ModelSerializer):
+    problem = ProblemSerializer()
+    class Meta:
+        model = FAQ
+        fields = ['id', 'problem_id', 'question','answer','problem']
+
+class FaqViewSet(viewsets.ModelViewSet):
+    queryset = FAQ.objects.all()
+    serializer_class = FaqSerializer

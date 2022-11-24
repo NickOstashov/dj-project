@@ -14,22 +14,30 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from django.conf import settings
 from django.views.static import serve
 from django.conf.urls.static import static
-
+from rest_framework import routers
 #импорты каталогов
 
-from psu.views import HomePage, Search, FaqPage, CategorySearch
+from psu.views import HomePage, Search, FaqPage, CategorySearch, ProblemViewSet, FaqViewSet
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'problem', ProblemViewSet)
+router.register(r'faq', FaqViewSet)
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('api/', include(router.urls)),
     path('',HomePage.as_view(), name = "main_page"),
     path('search/',Search.as_view(),name = "search"),
     path('category_search/',CategorySearch.as_view(), name = "category_search"),
     path('pr_category/<int:pr_id>/',FaqPage.as_view(),name="problem_detail"),
+    path('api-auth/', include('rest_framework.urls')),
 ]
 
 urlpatterns +=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

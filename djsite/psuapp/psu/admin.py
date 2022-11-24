@@ -1,5 +1,6 @@
 from django.contrib import admin
 from psu.models import Problem,FAQ
+from users.models import CustomUser
 # Register your models here.
 
 @admin.register(Problem)
@@ -12,4 +13,7 @@ class FaqAdmin(admin.ModelAdmin):
     list_display = ['id','problem_id','problem','question','answer']
     list_editable = ['question','answer']
     list_filter = ['problem_id']
-    
+
+@admin.register(CustomUser)
+class UserAdmin(admin.ModelAdmin):
+    pass
