@@ -28,6 +28,7 @@ from psu.views import HomePage, Search, FaqPage, CategorySearch, ProblemViewSet,
 router = routers.DefaultRouter()
 router.register(r'problem', ProblemViewSet)
 router.register(r'faq', FaqViewSet)
+#router.register(r'admin', admin.site.urls)
 
 
 urlpatterns = [
