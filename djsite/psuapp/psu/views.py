@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from psu.models import Problem, FAQ
-from rest_framework import serializers, viewsets
+from rest_framework import viewsets
+from psu.serializers import ProblemSerializer, FaqSerializer
+from django_filters import FilterSet,CharFilter
+
 # from contact.models import Contact
 
 
@@ -52,22 +55,31 @@ class CategorySearch(FaqPage,ListView):
         return FAQ.objects.filter(question__icontains = self.request.GET.get('srh'))
 
 
-class ProblemSerializer(serializers.ModelSerializer):
+
+
+# django_rest_framework
+
+
+class ProblemSetFilter(FilterSet):
+    naming__icontains = CharFilter(field_name="naming",lookup_expr="icontains")
     class Meta:
         model = Problem
-        fields = ['id', 'naming', 'description', 'icon']
+        exclude = ['icon']
+        fields = "__all__"
 
 class ProblemViewSet(viewsets.ModelViewSet):
     queryset = Problem.objects.all()
     serializer_class = ProblemSerializer
+    filterset_class = ProblemSetFilter
 
 
-class FaqSerializer(serializers.ModelSerializer):
-    problem = ProblemSerializer()
+class FaqSetFilter(FilterSet):
+    question__icontains = CharFilter(field_name="question",lookup_expr="icontains")
     class Meta:
         model = FAQ
-        fields = ['id', 'problem_id', 'question','answer','problem']
+        fields = "__all__"
 
 class FaqViewSet(viewsets.ModelViewSet):
     queryset = FAQ.objects.all()
     serializer_class = FaqSerializer
+    filterset_class = FaqSetFilter

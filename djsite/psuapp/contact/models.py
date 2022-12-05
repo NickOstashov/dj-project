@@ -9,17 +9,8 @@ class Contact(models.Model):
     email = models.EmailField(max_length=254,blank=True,verbose_name="Email")
     tel = PhoneNumberField(region="RU",blank = True,verbose_name = "Номер телефона")
 
-    # def __str__(self):
-    #     return self.name
-
-    # def __str__(self):
-    #     return self.surname
-    
-    # def __str__(self):
-    #     return self.email
-    
-    # def __str__(self):
-    #     return self.tel
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "Контакт"

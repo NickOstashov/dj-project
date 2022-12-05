@@ -25,10 +25,6 @@ class FAQ(models.Model):
     question = models.TextField(verbose_name="Вопрос")
     answer = models.TextField(verbose_name="Ответ")
 
-    # def get_absolute_url(self):
-    #     from django.urls import reverse
-    #     return reverse("problem_detail", kwargs={"pk": self.problem_id})
-
     class Meta:
         ordering = ['problem_id']
         verbose_name = "Часто задаваемый вопрос"

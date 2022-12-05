@@ -1,14 +1,14 @@
 <template>
-  <body class = "body">
     <nav-bar></nav-bar>
     <problem-component></problem-component>
-  </body>
+    <contact-bar></contact-bar>
 </template>
 
 <script>
 import axios from 'axios'
 import NavBar from '@/components/NavBar.vue'
 import ProblemComponent from '@/components/ProblemComponent.vue'
+import ContactBar from './src/components/ContactBar.vue'
 
 export default {
   name: 'App',
@@ -27,15 +27,13 @@ export default {
     components: {
       NavBar,
       ProblemComponent,
+      ContactBar,
     }
 }
 </script>
 
 <style>
-.body{
-  height: 100%;
-  background-color: #EEE;
-}
+
 
 #app {
   margin: 0 0;
@@ -44,5 +42,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #EEE;
 }
 </style>
