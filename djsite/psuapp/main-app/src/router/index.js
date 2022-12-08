@@ -7,6 +7,12 @@ const routes = [
       name: 'home',
       component: HomeView
     },
+
+    {
+      path: '/problem-detail/:id',
+      name: 'problem-detail',
+      component: () => import(/* webpackChunkName: "about" */ '../views/DetailView.vue')
+    },
    
   ]
   

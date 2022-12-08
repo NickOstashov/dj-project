@@ -19,6 +19,16 @@ class Problem(models.Model):
         verbose_name = "Возможная проблема"
         verbose_name_plural = "Возможные проблемы"
 
+class typeProblem(models.Model):
+    problem = models.ForeignKey('Problem',blank = True, null = True,on_delete=models.SET_NULL, verbose_name="Индентификатотр проблемы") 
+    breaking = models.CharField(max_length=255, blank=True, verbose_name="Наименование возможной проблемы")
+    extension = models.JSONField(default={},blank=True, verbose_name="Дополнительные поля")
+
+    def __str__(self):
+        return self.breaking
+    class Meta:
+        verbose_name = "Вариант проблемы"
+        verbose_name_plural = "Варианты проблем"
 
 class FAQ(models.Model):
     problem = models.ForeignKey('Problem', blank = True, null = True,on_delete=models.SET_NULL, verbose_name="Индентификатотр проблемы")

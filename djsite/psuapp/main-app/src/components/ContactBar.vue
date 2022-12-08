@@ -17,7 +17,6 @@
                     </div>
                 </div>
             </div>
-            <button @click="getContact">получить</button>
         </div>
     </div>
 </template>
@@ -41,6 +40,10 @@ export default{
             this.contact_list = data 
         }
     },
+
+    mounted(){
+        this.getContact()
+    }
 }
 </script>
 
@@ -55,8 +58,8 @@ export default{
 }
 
 .contact-card{
-    background: rgba(0, 0, 0, 0);
-    border: none;
+    background: rgba(0, 0, 0, 0) !important;
+    border: none !important;
 }
 
 .contact-text{

@@ -1,11 +1,9 @@
 const  problemUrl= '/api/problem/'
 const  contactUrl= '/api/contact/'
 const  faqUrl= '/api/faq/'
+
+
 import axios from "axios"
-
-
-
-
 
 
 export function toURLParams(filters){
@@ -84,3 +82,8 @@ function apiConstructor(apiUrl){
     }
 }           
 
+
+
+export let Problem = apiConstructor(problemUrl)
+export let Faq = apiConstructor(faqUrl)
+export let Contact = apiConstructor(contactUrl)

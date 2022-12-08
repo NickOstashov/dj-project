@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from rest_framework import routers
 #импорты каталогов
 
-from psu.views import HomePage, Search, FaqPage, CategorySearch, ProblemViewSet, FaqViewSet
+from psu.views import HomePage, Search, FaqPage, CategorySearch, ProblemViewSet, FaqViewSet, ApplicationViewSet
 from contact.views import ContactViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -30,6 +30,7 @@ router = routers.DefaultRouter()
 router.register(r'problem', ProblemViewSet)
 router.register(r'faq', FaqViewSet)
 router.register(r'contact',ContactViewSet)
+router.register(r'application',ApplicationViewSet)
 #router.register(r'admin', admin.site.urls)
 
 

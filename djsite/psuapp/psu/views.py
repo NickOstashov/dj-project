@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from psu.models import Problem, FAQ
 from rest_framework import viewsets
-from psu.serializers import ProblemSerializer, FaqSerializer
+from psu.serializers import ProblemSerializer, FaqSerializer, ApplicationSerializer
 from django_filters import FilterSet,CharFilter
+from users.models import Applications
 
 # from contact.models import Contact
 
@@ -64,7 +65,7 @@ class ProblemSetFilter(FilterSet):
     naming__icontains = CharFilter(field_name="naming",lookup_expr="icontains")
     class Meta:
         model = Problem
-        exclude = ['icon']
+        exclude = ['icon','extension_field']
         fields = "__all__"
 
 class ProblemViewSet(viewsets.ModelViewSet):
@@ -83,3 +84,14 @@ class FaqViewSet(viewsets.ModelViewSet):
     queryset = FAQ.objects.all()
     serializer_class = FaqSerializer
     filterset_class = FaqSetFilter
+
+
+class ApplicationSetFilter(FilterSet):
+        model = Applications.objects.all()
+        exclude = ['additional_info']
+        fields = "__all__"
+
+class ApplicationViewSet(viewsets.ModelViewSet):
+    queryset = Applications.objects.all()
+    serializer_class = ApplicationSerializer
+    filterset_class = ApplicationSetFilter
