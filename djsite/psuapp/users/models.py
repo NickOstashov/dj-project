@@ -14,14 +14,12 @@ class CustomUser(AbstractUser):
 
 class Applications(models.Model):
     user = models.ForeignKey('CustomUser', blank = True, null = True,on_delete=models.SET_NULL, verbose_name="Индентификатотр пользователя")
-    name = models.CharField(max_length=100,blank = True, verbose_name="Имя")
-    surname = models.CharField(max_length=100,blank = True, verbose_name="Фамилия")
+    user_name = models.CharField(max_length=255,blank = True, verbose_name="ФИО")
     comment = models.TextField(blank=True,verbose_name="Комментарии")
     position = models.CharField(max_length=100,blank=True,verbose_name="должность")
     tel = PhoneNumberField(region="RU",blank = True,verbose_name = "Номер телефона")
-    problem = models.ForeignKey(Problem,blank = True, null = True,on_delete=models.PROTECT, verbose_name="Вид пробдлемы")
-    kind_of_problem = models.ForeignKey(typeProblem, blank = True, null = True,on_delete=models.PROTECT, verbose_name="Вариант проблемы")
-    additional_info = models.JSONField(default={},blank=True,verbose_name="Дополнительная информация")
+    kind_of_problem = models.ForeignKey(Problem, blank = True, null = True,on_delete=models.PROTECT, verbose_name="Вариант проблемы")
+    #additional_info = models.JSONField(default={},blank=True,verbose_name="Дополнительная информация")
     STATUS = (
         ('SU','успешно завершена'),
         ('NW','новая заявка'),

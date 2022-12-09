@@ -9,6 +9,12 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
+
+import axios from 'axios';
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+axios.defaults.xsrfCookieName = "csrftoken";
+
+
 const app = createApp(App)
 app.component("HeaderNav",HeaderNav)
 app.use(router).mount('#app')

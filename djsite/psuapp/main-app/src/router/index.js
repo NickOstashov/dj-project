@@ -13,6 +13,19 @@ const routes = [
       name: 'problem-detail',
       component: () => import(/* webpackChunkName: "about" */ '../views/DetailView.vue')
     },
+
+    {
+      path: '/app/',
+      name: 'create-app',
+      component: () => import(/* webpackChunkName: "about" */ '../views/AppForm.vue')
+    },
+
+    {
+      path: '/applications/',
+      name: 'apps',
+      component: () => import(/* webpackChunkName: "about" */ '../views/ApplicationView.vue')
+    },
+   
    
   ]
   

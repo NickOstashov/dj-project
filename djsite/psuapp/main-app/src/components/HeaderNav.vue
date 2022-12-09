@@ -9,6 +9,14 @@
                     <li class="nav-item">
                         <router-link class="nav-link "  to="/">Home</router-link>
                     </li>
+
+                    <li class="nav-item">
+                        <router-link class="nav-link "  to="/app/">Создать заявку</router-link>
+                    </li>
+
+                    <li class="nav-item">
+                        <router-link class="nav-link "  to="/applications/">Заявки</router-link>
+                    </li>
                 </ul>
                 <span class="navbar-text">
                 </span>

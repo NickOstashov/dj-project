@@ -1,6 +1,7 @@
 const  problemUrl= '/api/problem/'
 const  contactUrl= '/api/contact/'
 const  faqUrl= '/api/faq/'
+const  appUrl = '/api/application/'
 
 
 import axios from "axios"
@@ -87,3 +88,4 @@ function apiConstructor(apiUrl){
 export let Problem = apiConstructor(problemUrl)
 export let Faq = apiConstructor(faqUrl)
 export let Contact = apiConstructor(contactUrl)
+export let Application = apiConstructor(appUrl)

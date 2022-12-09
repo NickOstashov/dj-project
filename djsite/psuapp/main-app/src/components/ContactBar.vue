@@ -2,7 +2,7 @@
     <div class = "contact">
         <div class = "container">
             <div class= "row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <div class = "col" v-for="cont in contact_list" :key="cont.id">
+                <div class = "col" v-for="cont in contactList" :key="cont.id">
                     <div class = "card h-60 contact-card">
                         <div class = "card-body">
                             <p class = "contact-text">
@@ -22,22 +22,23 @@
 </template>
 
 <script>
-import axios from 'axios'
+//import axios from 'axios'
+import {Contact} from '@/api'
 
 export default{
-    name:'contact-bdr',
+    name:'contact-bar',
 
     data(){
         return {
-          contact_list:[]
+          contactList:[]
         }
     },
 
     methods:{
         async getContact(){
             let params = {}
-            let data = (await axios.get('/api/contact/', {params})).data
-            this.contact_list = data 
+            let data = await Contact.objects.filter(params)
+            this.contactList = data 
         }
     },
 

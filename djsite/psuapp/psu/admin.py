@@ -25,6 +25,6 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Applications)
 class ApplicationAdmin(admin.ModelAdmin):
-    list_display = ['id','user_id','name','surname','position','tel','kind_of_problem','additional_info','status','comment']
+    list_display = ['id','user_id','user_name','position','tel','kind_of_problem','status','comment']
     list_editable = ['status']
     list_filter = ['user_id']

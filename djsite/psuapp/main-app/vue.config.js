@@ -25,7 +25,13 @@ module.exports = defineConfig({
       "^/api":{
         'target':"http://127.0.0.1:8000", 
         'ws':true,
-        'changeOrigin':true
+        'changeOrigin':true,
+        "bypass":(req) =>{
+          if (req.headers && req.headers.referer){
+            req.headers.referer = req.headers.referer.replace('http://127.0.0.1:8080', 'http://127.0.0.1:8000')
+            req.headers.host = req.headers.host.replace('127.0.0.1:8080','127.0.0.1:8000')
+          }
+        }
       },
       "^/admin":{
         "target":"http://127.0.0.1:8000",
