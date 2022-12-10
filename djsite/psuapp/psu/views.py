@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from psu.models import Problem, FAQ
 from rest_framework import viewsets
-from psu.serializers import ProblemSerializer, FaqSerializer, ApplicationSerializer
+from psu.serializers import ProblemSerializer, FaqSerializer, ApplicationSerializer, UserSerializer
 from django_filters import FilterSet,CharFilter
-from users.models import Applications
+from users.models import Applications, CustomUser
+from rest_framework.decorators import action
+from django.http import JsonResponse
 
 # from contact.models import Contact
 
@@ -87,11 +89,32 @@ class FaqViewSet(viewsets.ModelViewSet):
 
 
 class ApplicationSetFilter(FilterSet):
-        model = Applications.objects.all()
-        exclude = ['additional_info']
+    username__icontains = CharFilter(field_name="user_name",lookup_expr="icontains")
+    class Meta:
+        model = Applications
         fields = "__all__"
 
 class ApplicationViewSet(viewsets.ModelViewSet):
     queryset = Applications.objects.all()
     serializer_class = ApplicationSerializer
     filterset_class = ApplicationSetFilter
+
+class UserSetFilter(FilterSet):
+    username__icontains = CharFilter(field_name="username",lookup_expr="icontains")
+    class Meta:
+        model = CustomUser
+        fields= '__all__'
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = CustomUser.objects.all()
+    model = CustomUser
+    serializer_class = UserSerializer
+    filterset_class  = UserSetFilter
+
+    @action(detail=False,methods=['GET'])
+    def who_iam(self,request):
+        queryset = CustomUser.objects.all()
+        queryset =queryset.filter(id=self.request.user.id)
+        data = self.serializer_class(queryset,many=True).data
+        return JsonResponse(data,safe=False)
+        

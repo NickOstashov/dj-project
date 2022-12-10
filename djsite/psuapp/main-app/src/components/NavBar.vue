@@ -7,7 +7,7 @@
             </div>
             <div class = "nav__menu">
               <div class = "nav__menu-btn>">
-                <a href = "#">
+                <a href = "accounts/login/">
                   <button type="button" class="nav-btn">Войти</button>
                 </a>
               </div>

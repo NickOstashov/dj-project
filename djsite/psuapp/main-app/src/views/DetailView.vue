@@ -2,17 +2,11 @@
     <div>
         <nav-bar/>
         <div class = "detail">
-            <div class = "detail-search">
-                <div class = "container detail-searchh__item">
-                    <h2 class = "detail-title">{{title}}</h2>
-                    <div class = "col-6 detail-search__field">
-                        <img src="@/assets/img/search.svg" alt="#" class = "detail-search__field__icon">
-                        <input class="detail-search__field__input" placeholder="Введите запрос"/>
-                    </div>
-                </div>
+            <div class = "detail-title__box">
+                <h1 class = "detail-title">{{title}}</h1>
             </div>
             <div class ="container detail-contant">
-                <h1>Часто задаваемые вопросы</h1>
+                <h2>Часто задаваемые вопросы</h2>
                 <div v-for="i in faq" :key="i.id">
                     <div class = "cl-ct" @click="collapse">
                         <button class = "collapse-bt">
@@ -34,7 +28,7 @@
                     Если вы не нашли ответ на свой вопрос или не можете решить вашу проблему 
                     самостоятельно, оставьте заявку
                 </p>
-                <button type="button" class="btn btn-danger application-btn">Оставить заявку</button>
+                <button @click = "toCreate" type="button" class="btn btn-danger application-btn">Оставить заявку</button>
             </div>
         </div>
         <contact-bar/>
@@ -56,6 +50,10 @@ export default {
         }
     },
     methods:{
+        toCreate(){
+            this.$router.push({name:'create-app',params:{}})
+        },
+
         async getFaq(){
         let params ={
             problem:this.$route.params.id
@@ -105,44 +103,16 @@ export default {
     min-height: 800px;
 }
 
+.detail-title__box{
+    background-color: var(--minor-background);
+    display: flex;
+    padding: 20px 20px;
+    justify-content: center;
+    margin-bottom:50px;
+}
+
 .detail-contant{
     margin-bottom:100px;
-}
-
-.detail-search{
-    background-color: var(--minor-background);
-    width: 100%;
-    padding: 20px 0px;
-    margin-bottom: 20px;
-}
-
-.detail-searchh__item{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.detail-search__field{
-    display: flex;
-    align-items: center;
-    background-color: var(--search-bacground);
-    padding: 5px 5px;
-    border-radius: 10px;
-}
-
-.detail-search__field__icon{
-    width: 20px;
-    height: 20px;
-    padding-right: 5px;
-}
-
-.detail-search__field__input{
-    border: none;
-    width: 80%;
-}
-
-.detail-search__field__input:focus{
-    outline:none;
 }
 
 

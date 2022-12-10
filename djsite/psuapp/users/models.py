@@ -13,29 +13,28 @@ class CustomUser(AbstractUser):
 
 
 class Applications(models.Model):
-    user = models.ForeignKey('CustomUser', blank = True, null = True,on_delete=models.SET_NULL, verbose_name="Индентификатотр пользователя")
+    #user = models.ForeignKey('CustomUser', blank = True, null = True,on_delete=models.SET_NULL, verbose_name="Индентификатотр пользователя")
     user_name = models.CharField(max_length=255,blank = True, verbose_name="ФИО")
     comment = models.TextField(blank=True,verbose_name="Комментарии")
     position = models.CharField(max_length=100,blank=True,verbose_name="должность")
-    tel = PhoneNumberField(region="RU",blank = True,verbose_name = "Номер телефона")
-    kind_of_problem = models.ForeignKey(Problem, blank = True, null = True,on_delete=models.PROTECT, verbose_name="Вариант проблемы")
+    tel = models.CharField(max_length=20,blank = True,verbose_name = "Номер телефона")
+    kind_of_problem = models.CharField(max_length=255,blank=True,verbose_name="Наименование проблемы")
     #additional_info = models.JSONField(default={},blank=True,verbose_name="Дополнительная информация")
-    STATUS = (
-        ('SU','успешно завершена'),
-        ('NW','новая заявка'),
-        ('RE','заявка отклонена'),
-        ('AI','требуется уточнение'),
-        ('IP','в процессе выполнения'),
-        ('CH','проверка')
-    )
+    # STATUS = (
+    #     ('SU','успешно завершена'),
+    #     ('NW','новая заявка'),
+    #     ('RE','заявка отклонена'),
+    #     ('AI','требуется уточнение'),
+    #     ('IP','в процессе выполнения'),
+    #     ('CH','проверка')
+    # )
 
-    status = models.CharField(max_length=2,
-                           choices=STATUS,
-                           default='NW',
-                           verbose_name="Статус"
-                           )
+    # status = models.CharField(max_length=2,
+    #                        choices=STATUS,
+    #                        default='NW',
+    #                        verbose_name="Статус"
+    #                        )
 
     class Meta:
-        ordering = ['user_id']
         verbose_name = "Заявка"
         verbose_name_plural = "Заявки"

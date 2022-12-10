@@ -29,6 +29,10 @@ import {Problem} from '@/api'
         },
         components:{
             vSelect,
+        },
+
+        mounted(){
+            this.getProblem()
         }
     }
 </script>

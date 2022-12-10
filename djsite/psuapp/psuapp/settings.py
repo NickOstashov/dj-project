@@ -20,6 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+LOGIN_REDIRECT_URL = 'http://localhost:8080/'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -139,6 +141,7 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_DIRS = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [(os.path.join(BASE_DIR,'static'))]
+
 
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8080', 'http://localhost:8000']
 CSRF_COOKIE_DOMAIN = 'localhost'

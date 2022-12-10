@@ -8,11 +8,6 @@ class ProblemAdmin(admin.ModelAdmin):
     list_display = ['id','naming','description','icon']
     list_editable = ['description','icon']
 
-@admin.register(typeProblem)
-class typeProblemAdmin(admin.ModelAdmin):
-    list_display = ['id','problem_id','breaking','extension']
-    list_editable = ['extension']
-
 @admin.register(FAQ)
 class FaqAdmin(admin.ModelAdmin):
     list_display = ['id','problem_id','problem','question','answer']
@@ -25,6 +20,4 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Applications)
 class ApplicationAdmin(admin.ModelAdmin):
-    list_display = ['id','user_id','user_name','position','tel','kind_of_problem','status','comment']
-    list_editable = ['status']
-    list_filter = ['user_id']
+    list_display = ['id','user_name','position','tel','kind_of_problem','comment']

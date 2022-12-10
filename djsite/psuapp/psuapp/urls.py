@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
 from django.conf import settings
 from django.views.static import serve
@@ -22,7 +23,7 @@ from django.conf.urls.static import static
 from rest_framework import routers
 #импорты каталогов
 
-from psu.views import HomePage, Search, FaqPage, CategorySearch, ProblemViewSet, FaqViewSet, ApplicationViewSet
+from psu.views import HomePage, Search, FaqPage, CategorySearch, ProblemViewSet, FaqViewSet, ApplicationViewSet, UserViewSet
 from contact.views import ContactViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -31,11 +32,13 @@ router.register(r'problem', ProblemViewSet)
 router.register(r'faq', FaqViewSet)
 router.register(r'contact',ContactViewSet)
 router.register(r'application',ApplicationViewSet)
+router.register(r'user',UserViewSet)
 #router.register(r'admin', admin.site.urls)
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='login.html'),name="login"),
     path('api/', include(router.urls)),
     path('',HomePage.as_view(), name = "main_page"),
     path('search/',Search.as_view(),name = "search"),

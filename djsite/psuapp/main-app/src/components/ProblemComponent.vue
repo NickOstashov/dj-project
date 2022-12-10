@@ -23,6 +23,12 @@
                         </div>
                     </div>        
                 </div>
+            </div>
+            <div class = "container app-case">
+                <p class = "application-text">
+                    Если вы не нашли подходящей категорий, оставьте заявку и опишите вашу проблему
+                </p>
+                <button @click = "toCreate" type="button" class="btn btn-danger application-btn">Оставить заявку</button>
             </div>  
         </div>
 </template>
@@ -151,6 +157,27 @@ export default{
 
 .card h-100 problem-card{
     flex-direction: row;
+}
+
+.app-case{
+    margin-top:100px;
+}
+
+.application-text{
+    font-size: 18px;
+}
+
+.application-btn{
+    font-size: 20px;
+    color: var(--major-background);
+    background-color: var(--minor-background);
+    border-radius: 10px;
+    border: none;
+}
+
+.application-btn:hover{
+    color: var(--major-background);
+    background-color: var(--minor-background-opacity)
 }
 
 </style>

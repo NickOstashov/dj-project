@@ -7,7 +7,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <router-link class="nav-link "  to="/">Home</router-link>
+                        <router-link class="nav-link "  to="/">Главная</router-link>
                     </li>
 
                     <li class="nav-item">
